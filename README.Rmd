@@ -14,23 +14,25 @@ output:
 ---
 
 
-* Name: 
-* Project title:
-* Write-up on RPubs: <http://rpubs.com/rudeboybert/Tree_Growth_Differences>
-* Abstract: Hello World!
+* Name: James Burke
+* Project title: Exploring External Factors in the MLB
+* Write-up on RPubs: <http://rpubs.com/jamesburke4/FP_WriteUp>
+* Abstract: Unlike most other major sports, baseball stadiums are not restricted by a set of universal dimensions. While the diamonds may be the same, the size and shape of each field is unique. Additionally, the intricacies of baseball are extremely sensitive to external factors, including temperature, altitude, wind, daylight and more. This leads to an interesting question: what is the true impact of these external factors on the performance of Major League Baseball players? By using statistics from Fangraphs, performance can be measured across a variety of external conditions.
 
 
 ```{r, echo=FALSE, message=FALSE}
-#
-# Include code for one plot here
-#
-library(ggplot2)
-library(dplyr)
-small <- sample_n(diamonds, 2000) 
-ggplot(data=diamonds, aes(x=carat,y=price,colour=cut)) +
-  geom_point() +
-  scale_y_log10() + 
-  facet_wrap(~cut) +
-  ggtitle("Replace this plot with one of your own")
+library(tidyverse)
+library(knitr)
+library(forcats)
+
+abstract <- read_csv(file="abstract_data.csv")
+# Source: http://www.espn.com/fantasy/baseball/story/_/page/mlbdk2k16_parkfactors/which-parks-most-least-favorable-fantasy-baseball-hitters-pitchers-mlb#ARI
+
+ggplot(data = abstract, aes(x = `Basic Park Factor`, y = `Elevation (ft)`, color = League)) +
+  geom_point() + 
+  scale_y_log10() +
+  xlim(90, 120) +
+  ggtitle("MLB Park Factors and Elevations")
 ```
 
+Note: Basic Park Factor is a measure to compare the impact of specific ballparks on runs scored, with the average park factor set at 100. A higher park factor indicates higher run scoring than average.
