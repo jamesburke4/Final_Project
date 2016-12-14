@@ -16,7 +16,7 @@ output:
 
 * Name: James Burke
 * Project title: Exploring External Factors in the MLB
-* Write-up on RPubs: <http://rpubs.com/jamesburke4/FP_WriteUp>
+* Write-up on RPubs: <https://jamesburke.shinyapps.io/MLB_Park_Effects_writeup/>
 * Abstract: Unlike most other major sports, baseball stadiums are not restricted by a set of universal dimensions. While the diamonds may be the same, the size and shape of each field is unique. Additionally, the intricacies of baseball are extremely sensitive to external factors, including temperature, altitude, wind, daylight and more. This leads to an interesting question: what is the true impact of these external factors on the performance of Major League Baseball players? By using statistics from Fangraphs, performance can be measured across a variety of external conditions.
 
 
@@ -28,7 +28,7 @@ library(forcats)
 abstract <- read_csv(file="abstract_data.csv")
 # Source: http://www.espn.com/fantasy/baseball/story/_/page/mlbdk2k16_parkfactors/which-parks-most-least-favorable-fantasy-baseball-hitters-pitchers-mlb#ARI
 
-ggplot(data = abstract, aes(x = `Basic Park Factor`, y = `Elevation (ft)`, color = League)) +
+ggplot(data = abstract, aes(x = `Basic_PF`, y = `Elevation_ft`, color = League)) +
   geom_point() + 
   scale_y_log10() +
   xlim(90, 120) +
