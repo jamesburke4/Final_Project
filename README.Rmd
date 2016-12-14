@@ -32,6 +32,7 @@ ggplot(data = abstract, aes(x = `Basic_PF`, y = `Elevation_ft`, color = League))
   geom_point() + 
   scale_y_log10() +
   xlim(90, 120) +
+  labs(x = "Basic Park Factor", y = "Elevation (ft)") +
   ggtitle("MLB Park Factors and Elevations")
 ```
 
